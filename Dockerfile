@@ -27,9 +27,9 @@ RUN docker-php-ext-configure mysqli && \
 RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/local && \
     docker-php-ext-install   gd
 
-ADD entrypoint.sh /opt/conf/entrypoint.sh
 RUN echo "set nocompatible" > /root/.vimrc
 
 RUN a2enmod headers
 RUN a2enmod rewrite
 
+ADD entrypoint.sh /opt/conf/entrypoint.sh
