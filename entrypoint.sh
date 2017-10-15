@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [ -z "MYSQL_PASSWORD" ]; then
+if [ -z "$MYSQL_PASSWORD" ]; then
 MYSQL_PASSWORD=$(aws ssm get-parameters --names mysql-password-${STAGE} --with-decryption --query Parameters[0].Value --output text --region us-west-2)
 fi
-if [ -z "MYSQL_HOSTNAME" ]; then
+if [ -z "$MYSQL_HOSTNAME" ]; then
 MYSQL_HOSTNAME=$(aws ssm get-parameters --names mysql-hostname-${STAGE} --with-decryption --query Parameters[0].Value --output text --region us-west-2)
 fi
 
