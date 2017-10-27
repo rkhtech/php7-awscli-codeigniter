@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [ -z "$base_url" ]; then
-    echo "DOCKER environment variable 'base_url' is not defined."
+if [ -z "$DNS_NAME" ]; then
+    echo "DOCKER environment variable 'DNS_NAME' is not defined."
     echo
     echo "It can be defined by adding the following to the docker run command:"
-    echo "docker run -e base_url='example.com'"
+    echo "docker run -e DNS_NAME='example.com'"
     exit 1
 fi
 
@@ -22,7 +22,7 @@ sed \
 /var/www/html/application/config/database.php.template > /var/www/html/application/config/database.php
 fi
 
-sed -i -e 's/BASEURL/'${base_url}'/' /etc/apache2/sites-available/000-default.conf
+sed -i -e 's/DNS_NAME/'${DNS_NAME}'/' /etc/apache2/sites-available/000-default.conf
 
 #echo "---------------------"
 #cat /etc/apache2/sites-available/000-default.conf
