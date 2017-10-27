@@ -1,0 +1,19 @@
+Define domain BASEURL
+
+ServerName ${domain}
+
+<VirtualHost *:81>
+    ServerAlias *
+    Redirect permanent / https://${domain}
+</VirtualHost>
+
+
+<VirtualHost *:80>
+    ServerAlias *
+
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>

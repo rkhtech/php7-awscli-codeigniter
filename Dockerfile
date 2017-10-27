@@ -6,7 +6,8 @@ MAINTAINER Randy Hommel <randy@hommel.name>
 
 ENV TZ America/Los_Angeles
 
-EXPOSE 80 
+#port 81 is solely for redirecting non-https traffic
+EXPOSE 80 81
 
 WORKDIR /var/www/html
 ENTRYPOINT /opt/conf/entrypoint.sh
@@ -33,3 +34,6 @@ RUN a2enmod headers
 RUN a2enmod rewrite
 
 ADD entrypoint.sh /opt/conf/entrypoint.sh
+ADD 000-default.html /etc/apache2/sites-available/000-default.conf
+RUN echo 'Listen 81' >> /etc/apache2/ports.conf
+RUN echo "ok" > /var/www/html/index.html

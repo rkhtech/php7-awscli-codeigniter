@@ -1,0 +1,11 @@
+#!/bin/bash
+
+docker rm -f apache-test
+docker build -t apache .
+docker run -d --name apache-test -e BASEURL=example.com apache
+ip=$(docker-ip apache-test)
+echo sleeping for 5s
+sleep 5s
+echo curl -I http://$ip:81
+curl -I http://$ip:81
+docker logs apache-test
