@@ -18,6 +18,6 @@ ServerName ${domain}
     SetEnvIf User-Agent "ELB-Health" dontlog
     SetEnvIf User-Agent "Amazon Route 53 Health Check Service" dontlog
 
-    ErrorLog ${APACHE_LOG_DIR}/error.log
+    ErrorLog ${APACHE_LOG_DIR}/error.log env=!dontlog
     CustomLog ${APACHE_LOG_DIR}/access.log combined env=!dontlog
 </VirtualHost>
