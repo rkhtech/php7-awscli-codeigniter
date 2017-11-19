@@ -12,6 +12,7 @@ EXPOSE 80 81
 WORKDIR /var/www/html
 ENTRYPOINT /opt/conf/entrypoint.sh
 
+ADD bashrc /root/.bashrc
 RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get install -y php5-mcrypt libmcrypt-dev vim zlib1g-dev python-pip
 
@@ -32,6 +33,10 @@ RUN echo "set nocompatible" > /root/.vimrc
 
 RUN a2enmod headers
 RUN a2enmod rewrite
+
+RUN touch /var/log/apache2/php-errors.log
+RUN chown www-data:www-data /var/log/apache2/php-errors.log
+ADD phperrors.ini /usr/local/etc/php/conf.d/phperrors.ini
 
 ADD entrypoint.sh /opt/conf/entrypoint.sh
 ADD 000-default.html /etc/apache2/sites-available/000-default.conf

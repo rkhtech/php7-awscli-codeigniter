@@ -14,10 +14,19 @@ ServerName ${domain}
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www/html
 
-    SetEnvIf User-Agent "-" dontlog
-    SetEnvIf User-Agent "ELB-Health" dontlog
-    SetEnvIf User-Agent "Amazon Route 53 Health Check Service" dontlog
+#    SetEnvIf User-Agent "^-$" dontlog
+#    SetEnvIf User-Agent "ELB-Health" dontlog
+#    SetEnvIf User-Agent "Amazon Route 53 Health Check Service" dontlog
+#    SetEnvIf User-Agent "Apache/2.4.10 (Debian) PHP/5.6.32 (internal dummy connection)" dontlog
+#    SetEnvIf Remote_Host "test.ductcerts.com" dontlog
+#    SetEnvIf Remote_Host "prod.ductcerts.com" dontlog
+#    SetEnvIf Remote_Host "www.ductcerts.com" dontlog
 
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined env=!dontlog
 </VirtualHost>
+
+
+# test.ductcerts.com:81 127.0.0.1 - - [18/Nov/2017:17:10:32 -0800] "OPTIONS * HTTP/1.0" 200 126 "-" "Apache/2.4.10 (Debian) PHP/5.6.32 (internal dummy connection)"
+# test.ductcerts.com:81 172.31.38.22 - - [18/Nov/2017:17:10:31 -0800] "-" 408 0 "-" "-"
+# 172.31.38.22 - - [18/Nov/2017:17:10:31 -0800] "-" 408 0 "-" "-"
