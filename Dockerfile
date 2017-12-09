@@ -37,6 +37,7 @@ RUN a2enmod rewrite
 RUN touch /var/log/apache2/php-errors.log
 RUN chown www-data:www-data /var/log/apache2/php-errors.log
 ADD phperrors.ini /usr/local/etc/php/conf.d/phperrors.ini
+ADD uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 
 ADD entrypoint.sh /opt/conf/entrypoint.sh
 ADD 000-default.html /etc/apache2/sites-available/000-default.conf
