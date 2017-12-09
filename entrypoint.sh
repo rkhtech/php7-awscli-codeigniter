@@ -24,7 +24,7 @@ fi
 
 sed -i -e 's/DNS_NAME/'${DNS_NAME}'/' /etc/apache2/sites-available/000-default.conf
 
-chown -R www-data:www-data /var/www/html
+#chown -R www-data:www-data /var/www/html
 mkdir -p /var/log/ductcerts
 chown -R /var/log/ductcerts
 
