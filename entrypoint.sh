@@ -14,6 +14,12 @@ fi
 if [ -z "$MYSQL_HOSTNAME" ]; then
 MYSQL_HOSTNAME=$(aws ssm get-parameters --names mysql-hostname-${STAGE} --with-decryption --query Parameters[0].Value --output text --region us-west-2)
 fi
+if [ -z "$AUTH_LOGIN_ID" ]; then
+AUTH_LOGIN_ID=$(aws ssm get-parameters --names mysql-hostname-${STAGE} --with-decryption --query Parameters[0].Value --output text --region us-west-2)
+fi
+if [ -z "$AUTH_TRANSACTION_KEY" ]; then
+AUTH_TRANSACTION_KEY=$(aws ssm get-parameters --names mysql-hostname-${STAGE} --with-decryption --query Parameters[0].Value --output text --region us-west-2)
+fi
 
 if [ -f /var/www/application/config/database.php.template ]; then
 sed \
