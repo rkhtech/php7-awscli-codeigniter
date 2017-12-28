@@ -42,6 +42,6 @@ ADD php_ini/phperrors.ini /usr/local/etc/php/conf.d/phperrors.ini
 ADD php_ini/phpuploads.ini /usr/local/etc/php/conf.d/phpuploads.ini
 
 ADD entrypoint.sh /opt/conf/entrypoint.sh
-ADD 000-default.html /etc/apache2/sites-available/000-default.conf
+ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN echo 'Listen 81' >> /etc/apache2/ports.conf
 RUN echo "ok" > /var/www/html/index.html
