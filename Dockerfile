@@ -1,7 +1,7 @@
 # Dockerfile used to create an Apache/PHP environment for PHP sites
 # includes awscli, and
 
-FROM php:5.6-apache
+FROM php:7-apache
 MAINTAINER Randy Hommel <randy@hommel.name>
 
 ENV TZ America/Los_Angeles
@@ -14,12 +14,11 @@ ENTRYPOINT /opt/conf/entrypoint.sh
 
 ADD bashrc /root/.bashrc
 RUN apt-get update -y && apt-get upgrade -y
-RUN apt-get install -y libmcrypt-dev vim zlib1g-dev python-pip
+RUN apt-get install -y vim zlib1g-dev python-pip libpng-dev libjpeg-dev
 
 RUN pip install --upgrade pip && \
     pip install awscli
 
-RUN apt-get install -y libpng12-dev libjpeg-dev
 RUN apt-get autoremove -y
 
 RUN docker-php-ext-configure zip && \
@@ -28,8 +27,6 @@ RUN docker-php-ext-configure mysqli && \
     docker-php-ext-install   mysqli
 RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/local && \
     docker-php-ext-install   gd
-RUN docker-php-ext-configure mcrypt && \
-    docker-php-ext-install   mcrypt
 
 RUN echo "set nocompatible" > /root/.vimrc
 
