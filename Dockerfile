@@ -38,6 +38,8 @@ RUN chown www-data:www-data /var/log/apache2/php-errors.log
 ADD php_ini/phperrors.ini /usr/local/etc/php/conf.d/phperrors.ini
 ADD php_ini/phpuploads.ini /usr/local/etc/php/conf.d/phpuploads.ini
 
+ADD cli /bin
+
 ADD entrypoint.sh /opt/conf/entrypoint.sh
 ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN echo 'Listen 81' >> /etc/apache2/ports.conf
