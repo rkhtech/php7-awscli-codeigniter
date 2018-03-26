@@ -1,7 +1,7 @@
 # Dockerfile used to create an Apache/PHP environment for PHP sites
 # includes awscli, and
 
-FROM php:7-apache
+FROM php:5.6-apache
 MAINTAINER Randy Hommel <randy@hommel.name>
 
 ENV TZ America/Los_Angeles
