@@ -28,6 +28,8 @@ RUN docker-php-ext-configure mysqli && \
     docker-php-ext-install   mysqli
 RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/local && \
     docker-php-ext-install   gd
+RUN docker-php-ext-configure exif && \
+    docker-php-ext-install   exif
 
 RUN echo "set nocompatible" > /root/.vimrc
 
