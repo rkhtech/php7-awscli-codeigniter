@@ -16,3 +16,5 @@ alias l='ls $LS_OPTIONS -lA'
 # alias rm='rm -i'
 # alias cp='cp -i'
 # alias mv='mv -i'
+
+alias cli='cd /var/www/html && php index.php cli'
