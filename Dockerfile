@@ -31,6 +31,9 @@ RUN docker-php-ext-configure gd --with-jpeg-dir=/usr/local && \
     docker-php-ext-install   gd
 RUN docker-php-ext-configure exif && \
     docker-php-ext-install   exif
+RUN docker-php-ext-configure opcache && \
+    docker-php-ext-install   opcache
+
 
 RUN echo "set nocompatible" > /root/.vimrc
 
