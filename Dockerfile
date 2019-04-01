@@ -14,7 +14,7 @@ ENTRYPOINT /opt/conf/entrypoint.sh
 
 ADD bashrc /root/.bashrc
 RUN apt-get update -y && apt-get upgrade -y
-RUN apt-get install -y vim zlib1g-dev python libpng-dev libjpeg-dev
+RUN apt-get install -y vim zlib1g-dev python libpng-dev libjpeg-dev unzip zip
 RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
 RUN python /tmp/get-pip.py
 
