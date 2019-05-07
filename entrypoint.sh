@@ -38,4 +38,6 @@ chown -R www-data:www-data /var/log/ductcerts
 #cat /etc/apache2/sites-available/000-default.conf
 #echo "---------------------"
 
+echo "ServerTokens Full" >> /etc/apache2/apache2.conf
+
 apache2-foreground
