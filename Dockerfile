@@ -5,7 +5,7 @@ FROM php:5.6-apache
 MAINTAINER Randy Hommel <randy@hommel.name>
 
 ENV TZ America/Los_Angeles
-
+RUN echo 'date.timezone=America/Los_Angeles' > /usr/local/etc/php/conf.d/timezone.ini
 #port 81 is solely for redirecting non-https traffic
 EXPOSE 80 81
 
@@ -34,6 +34,9 @@ RUN docker-php-ext-configure exif && \
 RUN docker-php-ext-configure opcache && \
     docker-php-ext-install   opcache
 
+COPY slack-php-extension/slack-apt-0.4.20.so /tmp/slack.so
+RUN mv /tmp/slack.so $(php-config --extension-dir)/slack.so
+RUN echo "extension=slack.so" > /usr/local/etc/php/conf.d/slack.ini
 
 RUN echo "set nocompatible" > /root/.vimrc
 
