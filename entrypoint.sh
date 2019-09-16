@@ -9,10 +9,10 @@ if [ -z "$DNS_NAME" ]; then
 fi
 
 # ENVIRONMENT VARIABLES USED BY THE SLACK-PHP-EXTENSION
-EXPORT SLACK_WEBHOOK_URL=
-EXPORT SLACK_APP_NAME=$DNS_NAME
-EXPORT DEVELOPER=$DEV_NAME
-EXPORT environment=$STAGE
+export SLACK_WEBHOOK_URL=
+export SLACK_APP_NAME=$DNS_NAME
+export DEVELOPER=$DEV_NAME
+export environment=$STAGE
 
 if [ -z "$MYSQL_PASSWORD" ]; then
 MYSQL_PASSWORD=$(aws ssm get-parameters --names mysql-password-${STAGE} --with-decryption --query Parameters[0].Value --output text --region us-west-2)
